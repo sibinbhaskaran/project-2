@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOMEPAGE</title>
+</head>
+<body>
+    
+    <div class="container">
+        <a href='/store/new/'>Add a new car </a>
+               <ul>
+               <% for( let i=0; i< store.length; i++) { %>
+                    <div class="items">
+                       <li> <h3><%= store[i].name %></h3></li>
+                       <li> <a href='/store/<%=store[i].id%>'><img src="<%= store[i].images %>"></li></a>
+                       <li> Price: $<%= store[i].price %></li>
+                   </div>
+           <% } %>
+   
+           </ul>
+
+
+
+</body>
+</html>

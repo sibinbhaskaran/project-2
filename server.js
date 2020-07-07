@@ -6,6 +6,7 @@ const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
+
 require('dotenv').config()
 
 
@@ -46,14 +47,58 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
+const Store = require('./models/store.js');
+
 
 //___________________
 // Routes
 //___________________
 //localhost:3000
-app.get('/' , (req, res) => {
-  res.send('Hello World!');
-});
+//index 
+app.get('/store/' , (req, res) => {
+    Store.find({}, (error, allitems) =>{
+
+
+        res.render('index.ejs',{
+            
+            store: allitems
+    
+            })
+        })
+    
+    })
+
+
+//new
+
+app.get('/store/new/', (req,res) =>{
+
+res.render('new.ejs');
+
+
+})
+
+//post
+
+app.post('/store/', (req,res) =>{
+
+    Store.create(req.body, (error,newItem) =>{
+
+        res.redirect('/store');
+    })
+})
+
+
+
+
+
+
+
+
+
+
+
+
 
 //___________________
 //Listener
