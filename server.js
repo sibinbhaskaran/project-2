@@ -89,7 +89,20 @@ app.post('/store/', (req,res) =>{
 })
 
 
+//show
 
+app.get('/store/:id', (req,res) =>{
+
+
+    Store.findById(req.params.id, (error, foundItem) =>{
+    
+    res.render('show.ejs',{
+
+    store: foundItem
+            })
+        })
+    
+    })
 
 
 

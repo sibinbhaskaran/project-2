@@ -2,7 +2,9 @@ const mongoose = require('mongoose');
 const storeSchema = new mongoose.Schema({
 
     name: String,
-    images: [String],
+    imageFront: String,
+    imageSide: String,
+    imageInside: String,
     price: Number,
     features: String,
     qty: {type:Number , required: true , min : 0},

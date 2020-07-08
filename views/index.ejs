@@ -8,19 +8,19 @@
 <body>
     
     <div class="container">
-        <a href='/store/new/'>Add a new car </a>
+        <a href='/store/new/'>Add new car details</a>
                <ul>
                <% for( let i=0; i< store.length; i++) { %>
                     <div class="items">
                        <li> <h3><%= store[i].name %></h3></li>
-                       <li> <a href='/store/<%=store[i].id%>'><img src="<%= store[i].images %>"></li></a>
+                       <li> <a href='/store/<%=store[i].id%>'><img src="<%= store[i].imageFront %>"></li></a>
                        <li> Price: $<%= store[i].price %></li>
                    </div>
            <% } %>
    
            </ul>
 
-
+           
 
 </body>
 </html>
