@@ -55,7 +55,7 @@ const Store = require('./models/store.js');
 //___________________
 //localhost:3000
 //index 
-app.get('/store/' , (req, res) => {
+app.get('/' , (req, res) => {
     Store.find({}, (error, allitems) =>{
 
 
@@ -71,7 +71,7 @@ app.get('/store/' , (req, res) => {
 
 //new
 
-app.get('/store/new/', (req,res) =>{
+app.get('/new/', (req,res) =>{
 
 res.render('new.ejs');
 
@@ -80,18 +80,18 @@ res.render('new.ejs');
 
 //post
 
-app.post('/store/', (req,res) =>{
+app.post('/', (req,res) =>{
 
     Store.create(req.body, (error,newItem) =>{
 
-        res.redirect('/store');
+        res.redirect('/');
     })
 })
 
 
 //show
 
-app.get('/store/:id', (req,res) =>{
+app.get('/:id', (req,res) =>{
 
 
     Store.findById(req.params.id, (error, foundItem) =>{
