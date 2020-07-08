@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UPDATE DETAILS</title>
+</head>
+<body>
+    
+    <form action="/<%=store.id%>?_method=PUT" method="POST">
+        
+
+        MODEL:<input type="text" name="name" value="<%=store.name%>"/></br> 
+        FEATURES:<textarea name="features" value="<%=store.features%>" ></textarea></br> 
+        CAR IMAGES FRONT:<input type="url" name="imageFront" value="<%=store.imageFront%>"/></br> 
+        CAR IMAGES SIDE:<input type="url" name="imageSide" value="<%=store.imageSide%>"/></br> 
+        CAR IMAGES INTERIOR:<input type="url" name="imageInside" value="<%=store.imageInside%>" /></br> 
+        DEALER PRICE:<input type="number" name="price" value="<%=store.price%>"/></br> 
+        STOCK:<input type="number" name="qty" value="<%=store.qty%>"/></br> 
+             <input type= "submit" name="" value="Make changes"/>
+   
+        
+  </form>
+
+
+</body>
+</html>

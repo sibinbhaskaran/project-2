@@ -88,6 +88,39 @@ app.post('/', (req,res) =>{
     })
 })
 
+//edit
+app.get('/:id/edit/', (req,res) =>{
+
+Store.findById(req.params.id,(error,foundItem) =>{
+
+
+    res.render('edit.ejs', {
+
+        store:foundItem,
+    })
+})
+
+})
+
+
+//update
+app.put('/:id', (req,res) =>{
+
+Store.findByIdAndUpdate(req.params.id, req.body, (error,updateItem) =>{
+
+    res.redirect('/' + updateItem.id);
+})
+
+})
+
+
+
+
+
+
+
+
+
 
 //show
 
