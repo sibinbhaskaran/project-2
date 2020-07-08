@@ -106,7 +106,7 @@ Store.findById(req.params.id,(error,foundItem) =>{
 //update
 app.put('/:id', (req,res) =>{
 
-Store.findByIdAndUpdate(req.params.id, req.body, (error,updateItem) =>{
+Store.findByIdAndUpdate(req.params.id, req.body,{useFindAndModify: false}, (error,updateItem) =>{
 
     res.redirect('/' + updateItem.id);
 })

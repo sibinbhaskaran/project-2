@@ -1,0 +1,60 @@
+body {
+
+    background-color:gray
+}
+
+
+ img {
+     border: 2px solid black;
+     border-radius: 20px;
+     width: 100px;
+     height: 100px;
+ 
+ }
+ ul {
+     list-style: none;
+     
+ }
+
+ h6 {
+     color: red;
+     width: 140px;
+     border: 3px solid black;
+ }
+ .items {
+     text-align: center;
+   border: 2px solid black;
+   border-radius: 20px;
+   width: 200px;
+  display: inline-block;
+  background-color: silver;
+  
+
+ }
+ input[type="submit"] {
+    width: 35%;
+    height: 50px;
+    background: var(--purple);
+    box-shadow: 2px 2px var(--bright-blue);
+    font-family: 'Oswald';
+    font-size: 1.3em;
+    color: black;
+    border: 3px solid black
+
+  }
+
+  input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid var(--dusty-blue);
+  }
+  textarea {
+    width: 200px;
+    height: 100px;
+    max-width: 400px;
+    max-height: 150px;
+   }
+
+   
