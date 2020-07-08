@@ -7,15 +7,17 @@
 </head>
 <body>
     <a href="/">Back to home page</a>
-    <h3><%=store.name%></h3>
-    <h3><%=store.features%></h3>
-    <h3>$<%=store.price%></h3>
-    <img src="<%=store.imageFront%>">
-    <img src="<%=store.imageSide%>">
-    <img src="<%=store.imageInside%>">
-    
-    <a href="/<%=store.id%>/edit">UPDATE</a>
-    
+        <h3><%=store.name%></h3>
+        <h3><%=store.features%></h3>
+        <h3>$<%=store.price%></h3>
+        <img src="<%=store.imageFront%>">
+        <img src="<%=store.imageSide%>">
+        <img src="<%=store.imageInside%>">
+        
+        <a href="/<%=store.id%>/edit">UPDATE</a>
+    <form action="/<%=store.id%>?_method=DELETE" method="POST">
+       <input type="submit" value="DELETE"/>
+    </form>
    
     
 </body>
