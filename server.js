@@ -52,123 +52,29 @@ app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
 // calling models data
 const Store = require('./models/store.js');
-const User = require('./models/users.js');
+
 
 //Users route
 
-app.get('/users/new', (req, res) => {
-    res.render('users/new.ejs', {
-        // currentUser: req.session.currentUser
-    });
-});
+// app.get('/users/new', (req, res) => {
+//     res.render('users/new.ejs', {
+//         // currentUser: req.session.currentUser
+//     });
+// });
 
-app.post('/users', (req, res) => {
+// app.post('/users', (req, res) => {
     
-    req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
-    User.create(req.body, (err, createdUser) => {
-        console.log('user is created', createdUser);
-        res.redirect('/');
-    });
-});
+//     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+//     User.create(req.body, (err, createdUser) => {
+//         console.log('user is created', createdUser);
+//         res.redirect('/');
+//     });
+// });
   
 
-
-//___________________
-// Routes
-//___________________
-//localhost:3000
-//index 
-app.get('/' , (req, res) => {
-    Store.find({}, (error, allitems) =>{
-
-
-        res.render('index.ejs',{
-            
-            store: allitems
-    
-            })
-        })
-    
-    })
-
-
-//new
-
-app.get('/new/', (req,res) =>{
-
-res.render('new.ejs');
-
-
-})
-
-//post
-
-app.post('/', (req,res) =>{
-
-    Store.create(req.body, (error,newItem) =>{
-
-        res.redirect('/');
-    })
-})
-
-//edit
-app.get('/:id/edit/', (req,res) =>{
-
-Store.findById(req.params.id,(error,foundItem) =>{
-
-
-    res.render('edit.ejs', {
-
-        store:foundItem,
-    })
-})
-
-})
-
-
-//update
-app.put('/:id', (req,res) =>{
-
-Store.findByIdAndUpdate(req.params.id, req.body,{useFindAndModify: false}, (error,updateItem) =>{
-
-    res.redirect('/' + updateItem.id);
-})
-
-})
-
-
-
-
-
-
-
-
-
-
-//show
-
-app.get('/:id', (req,res) =>{
-
-
-    Store.findById(req.params.id, (error, foundItem) =>{
-    
-    res.render('show.ejs',{
-
-    store: foundItem
-            })
-        })
-    
-    })
-
-//Destroy
-app.delete('/:id', (req,res) =>{
-
-
-    Store.findByIdAndRemove(req.params.id,(error,deleteItem) =>{
-
-        res.redirect('/');
-    })
-})
+//store controller
+const storeController = require('./controllers/store.js');
+app.use(storeController);
 
 
 
