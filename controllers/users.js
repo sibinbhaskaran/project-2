@@ -6,13 +6,13 @@ const User = require('../models/users.js');
 
 //Users route
 
-userRouter.get('/users/new', (req, res) => {
+userRouter.get('/new', (req, res) => {
     res.render('users/new.ejs', {
         currentUser: req.session.currentUser
     });
 });
 
-userRouter.post('/users', (req, res) => {
+userRouter.post('/', (req, res) => {
     
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
     User.create(req.body, (err, createdUser) => {

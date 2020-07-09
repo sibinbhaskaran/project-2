@@ -67,17 +67,17 @@ const Store = require('./models/store.js');
 
 //store controller
 const storeController = require('./controllers/store.js');
-app.use(storeController);
+app.use('/', storeController);
 
 
 //User controller
 const userController = require('./controllers/users.js');
-app.use(userController);
+app.use('/users',userController);
 
 //session controller
 
 const sessionController = require('./controllers/sessions.js');
-app.use(sessionController);
+app.use('/sessions', sessionController);
 
 
 

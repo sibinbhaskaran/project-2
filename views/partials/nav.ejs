@@ -1,10 +1,12 @@
 <ul class="right">
-    
+  
     <% if (currentUser) { %>
+      <a href='/new/'>Add new car details</a>
     <li>Welcome <%= currentUser.username %></li>
     <li>
-      <form action="/sessions?_method=DELETE" method="POST">
-        <input type="submit" value="Log Out" class="btn-small red" />
+      
+      <form action="/sessions/delete?_method=DELETE" method="POST">
+        <input type="submit" value="Log Out" />
       </form>
     </li>
     <% } else { %>
