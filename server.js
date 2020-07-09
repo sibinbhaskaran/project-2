@@ -6,8 +6,11 @@ const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const app = express ();
 const db = mongoose.connection;
-
 require('dotenv').config()
+const session = require('express-session');
+const bcrypt = require('bcrypt');
+
+
 
 
 //___________________
@@ -47,7 +50,27 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
+// calling models data
 const Store = require('./models/store.js');
+const User = require('./models/users.js');
+
+//Users route
+
+app.get('/users/new', (req, res) => {
+    res.render('users/new.ejs', {
+        // currentUser: req.session.currentUser
+    });
+});
+
+app.post('/users', (req, res) => {
+    
+    req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+    User.create(req.body, (err, createdUser) => {
+        console.log('user is created', createdUser);
+        res.redirect('/');
+    });
+});
+  
 
 
 //___________________
