@@ -50,26 +50,19 @@ app.use(express.json());// returns middleware that only parses JSON - may or may
 //use method override
 app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
 
+app.use(
+    session({
+      secret: process.env.SECRET, 
+      resave: false, 
+      saveUninitialized: false
+    })
+)
+
 // calling models data
 const Store = require('./models/store.js');
 
 
-//Users route
 
-// app.get('/users/new', (req, res) => {
-//     res.render('users/new.ejs', {
-//         // currentUser: req.session.currentUser
-//     });
-// });
-
-// app.post('/users', (req, res) => {
-    
-//     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
-//     User.create(req.body, (err, createdUser) => {
-//         console.log('user is created', createdUser);
-//         res.redirect('/');
-//     });
-// });
   
 
 //store controller
@@ -77,9 +70,14 @@ const storeController = require('./controllers/store.js');
 app.use(storeController);
 
 
+//User controller
+const userController = require('./controllers/users.js');
+app.use(userController);
 
+//session controller
 
-
+const sessionController = require('./controllers/sessions.js');
+app.use(sessionController);
 
 
 

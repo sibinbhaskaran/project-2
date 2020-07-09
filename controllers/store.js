@@ -15,7 +15,8 @@ router.get('/' , (req, res) => {
 
         res.render('index.ejs',{
             
-            store: allitems
+            store: allitems,
+            currentUser: req.session.currentUser
     
             })
         })
@@ -27,7 +28,9 @@ router.get('/' , (req, res) => {
 
 router.get('/new/', (req,res) =>{
 
-res.render('new.ejs');
+res.render('new.ejs', {
+    currentUser: req.session.currentUser
+});
 
 
 })
@@ -51,6 +54,7 @@ Store.findById(req.params.id,(error,foundItem) =>{
     res.render('edit.ejs', {
 
         store:foundItem,
+        currentUser: req.session.currentUser
     })
 })
 
@@ -85,7 +89,8 @@ router.get('/:id', (req,res) =>{
     
     res.render('show.ejs',{
 
-    store: foundItem
+    store: foundItem,
+    currentUser: req.session.currentUser
             })
         })
     
