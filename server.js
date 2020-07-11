@@ -9,21 +9,15 @@ const db = mongoose.connection;
 require('dotenv').config()
 const session = require('express-session');
 const bcrypt = require('bcrypt');
+//
+const axios = require('axios').default;   // axious dependecy
+//
 
 
-
-
-//___________________
-//Port
-//___________________
-// Allow use of Heroku's port or your own local port, depending on the environment
 const PORT = process.env.PORT || 3000;
 
-//___________________
-//Database
-//___________________
-// How to connect to the database either via heroku or locally
-const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/storedb'   // changed to smallcaps
+
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/storedb'   
 
 // Connect to Mongo
 mongoose.connect(mongoURI  ,  { useNewUrlParser: true, useUnifiedTopology: true });
@@ -43,12 +37,12 @@ db.on('open' , ()=>{});
 //use public folder for static assets
 app.use(express.static('public'));
 
-// populates req.body with parsed info from forms - if no data from forms will return an empty object {}
-app.use(express.urlencoded({ extended: false }));// extended: false - does not allow nested objects in query strings
-app.use(express.json());// returns middleware that only parses JSON - may or may not need it depending on your project
 
-//use method override
-app.use(methodOverride('_method'));// allow POST, PUT and DELETE from a form
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
+
+app.use(methodOverride('_method'));
 
 app.use(
     session({
@@ -61,8 +55,53 @@ app.use(
 // calling models data
 const Store = require('./models/store.js');
 
+//
+
+// let zip= 77004;
+// let radius=20;
+app.get('/usedcars/', (req,res)=>{
+
+  let usedCar = { headers: { 
+        'Host': 'marketcheck-prod.apigee.net'
+      },
+    params: {
+      api_key: '2R1OVmDcZWEGzLQjI0McPJAi071xIWOn',
+      zip: 77004,
+      radius: 100,
+      car_type: 'used',
+      start: 0,
+      rows: 40,
+      sort_order: 'asc',
 
 
+    }
+  }
+
+axios.get('http://api.marketcheck.com/v2/search/car/active?',usedCar/*,zip,radius*/)
+.then(function (response) {
+  // console.log(JSON.stringify(response.data));
+  
+  // console.log(response.data.listings[0].price);
+  // console.log(response.data.listings);
+  res.render('usedcars.ejs',{
+
+    usedCarValue: response.data.listings
+  
+  })
+
+
+
+})
+.catch(function (error) {
+    console.log(error);
+  });
+})
+
+
+
+
+
+//
   
 
 //store controller

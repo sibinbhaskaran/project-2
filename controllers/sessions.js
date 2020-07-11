@@ -32,7 +32,7 @@ sessionRouter.post('/', (req, res) => {
 });
 
 sessionRouter.delete('/delete', (req, res) => {
-    console.log('test');
+    
     req.session.destroy(() => {
         
         res.redirect('/');

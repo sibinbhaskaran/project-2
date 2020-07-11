@@ -8,6 +8,7 @@ const storeSchema = new mongoose.Schema({
     price: Number,
     features: String,
     qty: {type:Number , required: true , min : 0},
+    
 
 });
 
