@@ -55,52 +55,61 @@ app.use(
 // calling models data
 const Store = require('./models/store.js');
 
-//
 
-// let zip= 77004;
-// let radius=20;
+
+
+
 app.get('/usedcars/', (req,res)=>{
+  usedcarfunc(77001,50,res);
+ 
+})
 
+app.post('/usedcars/',(req,res) =>{
+console.log(req.body);
+usedcarfunc(req.body.zip,req.body.radius,res);
+  
+// res.redirect('/usedcars')
+
+})
+
+const usedcarfunc = (zip,radius,res) =>{
+console.log(zip,radius)
   let usedCar = { headers: { 
-        'Host': 'marketcheck-prod.apigee.net'
-      },
-    params: {
-      api_key: '2R1OVmDcZWEGzLQjI0McPJAi071xIWOn',
-      zip: 77004,
-      radius: 100,
-      car_type: 'used',
-      start: 0,
-      rows: 40,
-      sort_order: 'asc',
+            'Host': 'marketcheck-prod.apigee.net'
+          },
+        params: {
+          api_key: '2R1OVmDcZWEGzLQjI0McPJAi071xIWOn',
+          zip: zip,
+          radius: radius,
+          car_type: 'used',
+          start: 0,
+          rows: 40,
+          sort_order: 'asc',
+    
+    
+        }
+      }
+    
+    axios.get('http://api.marketcheck.com/v2/search/car/active?',usedCar)
+    .then(function (response) {
+      // console.log(JSON.stringify(response.data));
+      
+     
+     
+      res.render('usedcars.ejs',{
+    
+        usedCarValue: response.data.listings
+      
+      })
+    
+    
+    
+    })
+    .catch(function (error) {
+        console.log(error);
+      });
 
-
-    }
-  }
-
-axios.get('http://api.marketcheck.com/v2/search/car/active?',usedCar/*,zip,radius*/)
-.then(function (response) {
-  // console.log(JSON.stringify(response.data));
-  
-  // console.log(response.data.listings[0].price);
-  // console.log(response.data.listings);
-  res.render('usedcars.ejs',{
-
-    usedCarValue: response.data.listings
-  
-  })
-
-
-
-})
-.catch(function (error) {
-    console.log(error);
-  });
-})
-
-
-
-
-
+}
 //
   
 
