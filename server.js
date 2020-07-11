@@ -10,7 +10,7 @@ require('dotenv').config()
 const session = require('express-session');
 const bcrypt = require('bcrypt');
 //
-const axios = require('axios').default;   // axious dependecy
+const axios = require('axios').default;   // axios dependecy
 //
 
 
@@ -55,9 +55,7 @@ app.use(
 // calling models data
 const Store = require('./models/store.js');
 
-
-
-
+///
 
 app.get('/usedcars/', (req,res)=>{
   usedcarfunc(77001,50,res);
@@ -90,7 +88,7 @@ console.log(zip,radius)
         }
       }
     
-    axios.get('http://api.marketcheck.com/v2/search/car/active?',usedCar)
+    axios.get('http://api.marketcheck.com/v2/search/car/active?',usedCar)    // calling used car api
     .then(function (response) {
       // console.log(JSON.stringify(response.data));
       
@@ -110,8 +108,8 @@ console.log(zip,radius)
       });
 
 }
-//
-  
+
+  ///
 
 //store controller
 const storeController = require('./controllers/store.js');
@@ -127,7 +125,9 @@ app.use('/users',userController);
 const sessionController = require('./controllers/sessions.js');
 app.use('/sessions', sessionController);
 
-
+//usedcars controller
+// const usedController = require('./controllers/usedcar.js');
+// app.use(usedController);
 
 //___________________
 //Listener
