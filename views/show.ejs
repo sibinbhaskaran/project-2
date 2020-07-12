@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link rel="stylesheet" href="/normalize.css">
     <link rel="stylesheet" href="/skeleton.css">
+   
     <link rel="stylesheet" href="/css/app.css"> 
     <title>Details</title>
 </head>
@@ -15,30 +15,34 @@
       </nav>
       <% if (currentUser) { %>
     <div class="container">
-    <a href="/">HOME</a>
-        <h3>Model:<%=store.name%></h3>
-        <h3>Specs:<%=store.features%></h3>
-        <h3>Price:$<%=store.price%></h3>
-        <h3>stock:  <%=store.qty%> </h3>
+    
+        <h6>Model:<%=store.name%></h6>
+        <h6>Specs:<%=store.features%></h6>
+        <h6>Price:$<%=store.price%></h6>
+        <h6>stock:  <%=store.qty%> </h6>
         <img src="<%=store.imageFront%>">
         <img src="<%=store.imageSide%>">
         <img src="<%=store.imageInside%>">
-        
-        <a href="/<%=store.id%>/edit">UPDATE</a>
+
+        <div class="showbuttons">
+        <a href="/<%=store.id%>/edit" class="update">UPDATE</a>
     <form action="/<%=store.id%>?_method=DELETE" method="POST">
        <input type="submit" value="DELETE"/>
     </form>
+</div>
    <%} else {%>
     <div class="container">
-        <a href="/">Back to home page</a>
-            <h3>Model:<%=store.name%></h3>
-            <h3>Specs:<%=store.features%></h3>
-            <h3>Price:$<%=store.price%></h3>
-            <h3>In stock: <%=store.qty%></h3>
-            <img src="<%=store.imageFront%>">
-            <img src="<%=store.imageSide%>">
-            <img src="<%=store.imageInside%>">
+        <img src="<%=store.imageFront%>" id="img">
+        <img src="<%=store.imageSide%>"id="img" >
+        <img src="<%=store.imageInside%>" id="img"> 
+        
+            <h6>Model:<%=store.name%></h6>
+            <h6>Specs:<%=store.features%></h6>
+            <h6>Price:$<%=store.price%></h6>
+            <h6>In stock: <%=store.qty%></h6>
             
+               
+        </div>
            
         </form>
 

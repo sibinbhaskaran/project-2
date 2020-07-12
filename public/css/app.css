@@ -1,13 +1,14 @@
 body {
-     background-image: url();
-    background-color:gray
+     background-image: url('./logo.png');
+    background-size: cover;
     
 }
 
-
+/*index page*/
  img {
      border: 2px solid black;
      border-radius: 20px;
+     
      width: 170px;
      height: 170px;
  
@@ -17,30 +18,29 @@ body {
      
  }
 
- h6 {
-     color: red;
-     width: 140px;
-     border: 3px solid black;
- }
+ 
  .items {
      text-align: center;
-   border: 2px solid black;
+   border: 2px solid gold;
    border-radius: 20px;
    width: 200px;
   display: inline-block;
-  background-color: silver;
+  background-color: transparent;
   
 
  }
+ li {
+   color: silver;
+   text-shadow: whitesmoke;
+ }
  input[type="submit"] {
-    width: 35%;
-    height: 50px;
-    background: var(--purple);
-    box-shadow: 2px 2px var(--bright-blue);
-    font-family: 'Oswald';
+    width: 230px;
+    height: 40px;
     font-size: 1.3em;
-    color: black;
-    border: 3px solid black
+    color: white;
+    border-radius: 5px;
+    border: 3px solid silver
+    
 
   }
 
@@ -48,8 +48,9 @@ body {
     width: 100%;
     margin: 10px 0;
     padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid var(--dusty-blue);
+   
+    border: 8px solid var(--dusty-blue);
+    
   }
   textarea {
     width: 200px;
@@ -58,4 +59,53 @@ body {
     max-height: 150px;
    }
 
+   /* show page*/
+   h6{
+     color: silver;
+     
+   }
+   a {
+     color: white;
+   }
+
+   form {
+ width: 800px;
+    color: grey;
+    
+    text-decoration: underline;
+    
+   }
+
+ .update {
+   color:white;
+   border: 2px solid silver;
+   border-radius: 5px;
+   padding: 6px;
+   text-decoration: none;
    
+   
+   
+ }  
+   
+ #img {
+
+  width: 150px;
+  height: 150px;
+  transition: 3s;
+ }
+
+ #img:hover {
+
+  width: 400px;
+  height: 400px;
+  
+ }
+ /*edit page div*/
+
+ .edit {
+   padding-left: 200px;
+ }
+ #navform {
+
+  
+ }

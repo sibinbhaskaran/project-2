@@ -55,59 +55,59 @@ app.use(
 // calling models data
 const Store = require('./models/store.js');
 
-///
+//
 
-app.get('/usedcars/', (req,res)=>{
-  usedcarfunc(77001,50,res);
+// app.get('/usedcars/', (req,res)=>{
+//   usedcarfunc(77001,50,res);
  
-})
+// })
 
-app.post('/usedcars/',(req,res) =>{
-console.log(req.body);
-usedcarfunc(req.body.zip,req.body.radius,res);
+// app.post('/usedcars/',(req,res) =>{
+// console.log(req.body);
+// usedcarfunc(req.body.zip,req.body.radius,res);
   
 // res.redirect('/usedcars')
 
-})
+// })
 
-const usedcarfunc = (zip,radius,res) =>{
-console.log(zip,radius)
-  let usedCar = { headers: { 
-            'Host': 'marketcheck-prod.apigee.net'
-          },
-        params: {
-          api_key: '2R1OVmDcZWEGzLQjI0McPJAi071xIWOn',
-          zip: zip,
-          radius: radius,
-          car_type: 'used',
-          start: 0,
-          rows: 40,
-          sort_order: 'asc',
+// const usedcarfunc = (zip,radius,res) =>{
+// console.log(zip,radius)
+//   let usedCar = { headers: { 
+//             'Host': 'marketcheck-prod.apigee.net'
+//           },
+//         params: {
+//           api_key: '2R1OVmDcZWEGzLQjI0McPJAi071xIWOn',
+//           zip: zip,
+//           radius: radius,
+//           car_type: 'used',
+//           start: 0,
+//           rows: 40,
+//           sort_order: 'asc',
     
     
-        }
-      }
+//         }
+//       }
     
-    axios.get('http://api.marketcheck.com/v2/search/car/active?',usedCar)    // calling used car api
-    .then(function (response) {
-      // console.log(JSON.stringify(response.data));
+//     axios.get('http://api.marketcheck.com/v2/search/car/active?',usedCar)    // calling used car api
+//     .then(function (response) {
+//       // console.log(JSON.stringify(response.data));
       
      
      
-      res.render('usedcars.ejs',{
+//       res.render('usedcars.ejs',{
     
-        usedCarValue: response.data.listings
+//         usedCarValue: response.data.listings
       
-      })
+//       })
     
     
     
-    })
-    .catch(function (error) {
-        console.log(error);
-      });
+//     })
+//     .catch(function (error) {
+//         console.log(error);
+//       });
 
-}
+// }
 
   ///
 
