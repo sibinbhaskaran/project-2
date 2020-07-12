@@ -6,6 +6,9 @@ const User = require('../models/users.js');
 
 //Users route
 
+
+//
+
 userRouter.get('/new', (req, res) => {
     res.render('users/new.ejs', {
         currentUser: req.session.currentUser
@@ -21,5 +24,7 @@ userRouter.post('/', (req, res) => {
         res.redirect('/');
     });
 });
+
+
 
 module.exports = userRouter;
