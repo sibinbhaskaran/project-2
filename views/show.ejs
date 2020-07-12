@@ -32,11 +32,12 @@
 </div>
    <%} else {%>
     <div class="container">
+        <h5>Model:<%=store.name%></h5>
         <img src="<%=store.imageFront%>" id="img">
         <img src="<%=store.imageSide%>"id="img" >
         <img src="<%=store.imageInside%>" id="img"> 
         
-            <h6>Model:<%=store.name%></h6>
+            
             <h6>Specs:<%=store.features%></h6>
             <h6>Price:$<%=store.price%></h6>
             <h6>In stock: <%=store.qty%></h6>

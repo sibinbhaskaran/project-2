@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/normalize.css">
     <link rel="stylesheet" href="/skeleton.css">
-    <title>Log In</title>
+    <link rel="stylesheet" href="/css/app.css"> 
+    <title>Admin Log In</title>
 </head>
 <body>
-    <h1>Log In</h1>
+    <div class="logindiv">
     <form action="/sessions" method="POST">
-        Username: <input type="text" name="username"/><br/>
-        Password: <input type="password" name="password"/><br/>
+        Username: <input type="text" name="username" id="loginput"/><br/>
+        Password: <input type="password" name="password" id="loginput"/><br/>
         <input type="submit" value="Log in"/>
     </form>
+</div>
 </body>
 </html>

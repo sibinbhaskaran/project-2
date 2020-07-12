@@ -5,24 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/normalize.css">
     <link rel="stylesheet" href="/skeleton.css">
+    <link rel="stylesheet" href="/css/app.css"> 
     <title>USED CARS</title>
 </head>
 <body>
     <a href="/">Home</a>
-
+    <div class="useddiv">
     <form action="/usedcars/" method="POST">
         ZIPCODE: <input type="number" name="zip" placeholder="77001"/><br/>
         Miles fromZIP: <input type="number" name="radius" placeholder="50"/><br/>
         <input type="submit" value="search"/>
     </form>
-
+</div>
     <ul>
         <% for( let i=0; i< usedCarValue.length; i++) { %>
-             <div class="items">
-                <li> <h4>Details :<%= usedCarValue[i].heading %></h4></li>
-                <li> <h4>PRICE :$<%= usedCarValue[i].price %></h4></li>
-                <li> <h4>Miles :<%= usedCarValue[i].miles %></h4></li>
-                <li> <h4>zip :<%= usedCarValue[i].dealer.zip %></h4></li>
+             <div class="usedcars">
+                
                 
                     <% let image1=''; %>
                     <% if(usedCarValue[i].media){ %>
@@ -30,7 +28,10 @@
                    <% } %>
                     <img src="<%=image1%>">
                     
-                
+                    <li> <p>Details :<%= usedCarValue[i].heading %></p></li>
+                    <li> <p>PRICE :$<%= usedCarValue[i].price %></p></li>
+                    <li> <p>Miles :<%= usedCarValue[i].miles %></p></li>
+                    <li> <p>zip :<%= usedCarValue[i].dealer.zip %></p></li>
                    
                    
                 <li> <a href="<%= usedCarValue[i].vdp_url %>">Seller Website</a></li>
