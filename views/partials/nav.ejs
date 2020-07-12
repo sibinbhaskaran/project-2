@@ -1,8 +1,8 @@
 <ul>
-  <a href="/">Home</a>
-  <a href='/usedcars/'>Used cars</a>
+  <a href="/" id="nav">Home</a>
+  <a href='/usedcars/' id="nav">Used cars</a>
     <% if (currentUser) { %>
-      <a href='/new/'>Add new car details</a>
+      <a href='/new/' id="nav">Add new car details</a>
     <li>Welcome <%= currentUser.username %></li>
     <li>
       
@@ -11,7 +11,10 @@
       </form>
     </li>
     <% } else { %>
-    <li><a href="/users/new">Admin Sign Up/</a></li>
-    <li><a href="/sessions/new">Log In</a></li>
+      
+          <li><a href="/users/new" id="nav">Sign Up</a></li>
+         <li><a href="/sessions/new" id="nav">Log In</a></li>
+
+   
     <% } %>
 </ul>

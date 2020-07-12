@@ -107,5 +107,17 @@ body {
  }
  #navform {
 
+  text-align: initial;
+ }
+
+ #nav {
+   padding-right: 10px;
+display: flex;
+
+justify-content: flex-end;
+
+
   
  }
+
+ 
