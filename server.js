@@ -73,7 +73,7 @@ const sessionController = require('./controllers/sessions.js');
 app.use('/sessions', sessionController);
 
 
-//usedcars controller
+// usedcars controller api
 const usedController = require('./controllers/usedcar.js');
 app.use('/cars/', usedController);
 
